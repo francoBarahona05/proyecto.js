@@ -214,7 +214,12 @@ const db = {
   }
 
 function desafioFetch() {
-  console.log(fetch("https://francobarahona05.github.io/proyecto.js/"))
-  
+   fetch("https://francobarahona05.github.io/proyecto.js/")
+  .then((Response)=> Response.JSON())
+  .then((data)=>console.log(data))
+  .catch((error) => console.log(error))
+
 }
+
+desafioFetch()
 
