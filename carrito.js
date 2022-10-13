@@ -213,5 +213,8 @@ const db = {
     
   }
 
-
+function desafioFetch() {
+  console.log(fetch("https://francobarahona05.github.io/proyecto.js/"))
+  
+}
 
