@@ -210,12 +210,13 @@ const db = {
   function actualizarProductos () {
     let producJson= JSON.stringify(shoppingCart.items)
     localStorage.setItem("items" , producJson)
-    
+
   }
 
-function desafioFetch() {
-   fetch("https://francobarahona05.github.io/proyecto.js/")
-  .then((Response)=> Response.JSON())
+ function desafioFetch() {
+   fetch("https://pokeapi.co/api/v2/pokemon/ditto")
+  .then((Response)=> Response.json()
+   )
   .then((data)=>console.log(data))
   .catch((error) => console.log(error))
 
