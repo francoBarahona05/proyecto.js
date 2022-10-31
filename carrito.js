@@ -12,26 +12,8 @@ const db = {
       console.log(db);
     },
   },
-  items: [
-    {
-      id: 0,
-      title: "Funko fredy",
-      price: 250,
-      qty: 5,
-    },
-    {
-      id: 1,
-      title: "pelota mundial",
-      price: 345,
-      qty: 50,
-    },
-    {
-      id: 2,
-      title: "peluche junior",
-      price: 1300,
-      qty: 2,
-    },
-  ],
+
+  items: [],
 };
   
   const shoppingCart = {
@@ -85,13 +67,14 @@ const db = {
   };
   
   renderStore();
-  
+
   function renderStore() {
     const html = db.items.map((item) => {
       return `
           <div class="item">
               <div class="title">${item.title}</div>
               <div class="price">${numberToCurrency(item.price)}</div>
+              <div class= "product"> <div class="producto__img"><img src="./media/producto.png"> </div> </div>
               <div class="qty">${item.qty} unidades</div>
               <div class="actions"><button class="add" data-id="${
                 item.id
@@ -108,7 +91,7 @@ const db = {
   
         if (item && item.qty - 1 > 0) {
           shoppingCart.methods.add(id, 1);
-          console.log(db, shoppingCart);
+
           renderShoppingCart();
         } else {
           alert("Ya no hay existencia de ese artículo");
@@ -160,16 +143,17 @@ const db = {
         const id = parseInt(button.getAttribute("data-id"));
         shoppingCart.methods.add(id, 1);
         renderShoppingCart()
-        Toastify({
-          text: "se agrego el producto",
-          duration: 5000,
-          gravity: "top", 
-          position: "right", 
-          stopOnFocus: true, 
-          style: {
-            background: "green",
-          },
-        }).showToast();;
+
+          Toastify({
+            text: "se agrego el producto",
+            duration: 5000,
+            gravity: "top", 
+            position: "right", 
+            stopOnFocus: true, 
+            style: {
+              background: "green",
+            },
+          }).showToast();
       });
     });
   
@@ -191,11 +175,60 @@ const db = {
       });
 
     });
+    const totalPag = `<div class="totalp">Total a pagar: ${numberToCurrency(total)}</div>`;
+      document.querySelector("#bPurchase").addEventListener("click", (e)=>{
+      document.querySelector("#uno").innerHTML=totalPag+`
+      <div class="terminar-compra">
+        <form class="contacto">
+          
+          <div >
+            <input class="contacto__nombre" type="text" placeholder="nombre" id="name">
+          </div>
+
+          <div>
+            <input class="contacto__nombre" type="text" placeholder="apellido" id="surname">
+          </div>  
+
+          <div >
+            <input  class="contacto__nombre" type="email" placeholder="ingrese su correo" id="form-mail">
+          </div>
+
+          <div> 
+            <button type="button" class="formulario__button" id="alert">terminar compra</button>
+          </div>  
+
+        </form>
+      </div>
+      ` 
+      document.querySelector("#alert").addEventListener("click" , (e) => {
+        let name = document.getElementById("name").value
+        let surname = document.getElementById("surname").value
+        let mail =document.getElementById("form-mail").value
+        let saludo = "Muchas! Gracias"+" "+ name +" "+ surname +" "+"por su compra!"
+
+        if (name == "") {
+          document.getElementById("name").focus()
+        }else{
+          if (surname == "") {
+            document.getElementById("surname").focus()
+          }else{
+            if (mail == "") {
+              document.getElementById("form-mail").focus()
+            }else{
+              alert(saludo)
+            }
+          }
+        }
+      })
+    });
+
       document.querySelector("#bClose").addEventListener("click", (e) => {
       document.querySelector("#shopping-cart-container").classList.remove("show");
+
+
       document.querySelector("#shopping-cart-container").classList.add("hide");
     });
-     
+
     actualizarProductos()
   }
   
@@ -213,14 +246,12 @@ const db = {
 
   }
 
- function desafioFetch() {
-   fetch("https://pokeapi.co/api/v2/pokemon/ditto")
-  .then((Response)=> Response.json()
-   )
-  .then((data)=>console.log(data))
-  .catch((error) => console.log(error))
-
+function desafioFetch() {
+  fetch(`./data/productos.json`)
+  .then((response) => response.json())
+  .then((data)=>{
+    db.items = [...data]
+    renderStore()
+  })
 }
 desafioFetch()
-
-

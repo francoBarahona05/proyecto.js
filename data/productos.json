@@ -1,0 +1,21 @@
+
+    [
+        {
+          "id": 0,
+          "title": "Funko fredy",
+          "price":900,
+          "qty": 5
+        },
+        {
+          "id": 1,
+          "title": "pelota mundial",
+          "price": 345,
+          "qty": 50
+        },
+        {
+          "id": 2,
+          "title": "peluche junior",
+          "price": 1300,
+          "qty": 2
+        }
+      ]

@@ -1,8 +1,43 @@
-body {
+  body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
   }
+
+  #app{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav__container{
+    width: 100%;
+    margin-top: -15px;
+    font-size: 20px;
+
+  }
+  .nav{
+    width: 100%;
+    background-color: #ffa430;
+    height: 70px;
+    display: flex;
+  }
+
+  .nav__ul{
+    display: flex;
+    margin-left: 150px;
+
+  }
+  .nav__li{
+   text-align: center;
+   margin-left: 200px;
+   padding-top: 11px;
+   list-style: none;
+  }
+ .nav__li a{
+  color: #000;
+  text-decoration: none;
+ }
+
   #store-container {
     display: flex;
     gap: 10px;
@@ -11,15 +46,22 @@ body {
   #store-container .item {
     border: solid 1px #ccc;
     padding: 20px;
+    margin-top: 20px;
+    margin-left: 50px;
   }
   
   #shopping-cart-container {
-    position: absolute;
+    /* position: absolute; */
     right: 0;
     width: 300px;
     border: solid 1px #ccc;
     padding: 10px;
+    /* margin-top: 60px; */
+    /* margin-right: 40px; */
+    margin-left: 950px;
+    margin-top: -400px;
   }
+
   
   .show {
     display: block;
@@ -50,4 +92,57 @@ body {
     background-color: yellowgreen;
     padding: 5px 10px;
     border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  .totalp{
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .terminar-compra{
+    margin-top: 10px;
+    margin-left: 425px;
+  }
+
+  .contacto__nombre{
+    height: 30px;
+    width: 500px;
+    box-sizing:border-box;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .formulario__button{
+    margin-left: 150px;
+    width: 200px;
+  }
+
+  .container__footer{
+    display: flex;
+    width: 100%;
+    height: 200px;
+    background-color: #ffa430;
+
+  }
+  
+  .footer__uno{
+    margin: auto;
+    width: 150px;
+    height: 150px;
+    background-color: #5a5a5a;
+  }
+  
+  .footer__dos{
+    margin: auto;
+    width: 150px;
+    height: 150px;
+    background-color:  #5a5a5a;
+  }
+  
+  .footer__tres{
+    margin: auto;
+    width: 150px;
+    height: 150px;
+    background-color:  #5a5a5a;
   }
